@@ -22,8 +22,8 @@ function getPlantillaticket($idcita)
                     <div class="infoticket">
                         <p>Francisco Cabrera N° 419 2° Piso<br>
                         (Esq. con A, Lapoint) - Chiclayo<br>
-                        Tel: (074) 618 329<br>
-                        Cel: 973 995 974<br>' . date('d-m-Y H:i:s') . '</p>
+                        Tel: (074) 123 456<br>
+                        Cel: 972 005 277<br>' . date('d-m-Y H:i:s') . '</p>
                         <p class="nrocita">N° CITA : ' . $idcita . '</p>
                     </div>
                     <div class="cuerpoticket">

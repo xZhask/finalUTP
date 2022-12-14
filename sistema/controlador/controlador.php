@@ -104,12 +104,14 @@ function controlador($accion)
             }
             break;
         case 'REGISTRAR_USUARIO':
+            $pass = $_POST['Pass'];
+            $pass = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 7]);
             $usuario = [
                 'dni' => $_POST['NroDocPersonal'],
                 'nombre' => $_POST['NombrePersonal'],
                 'apellidos' => $_POST['ApellidosPersonal'],
                 'nick' => $_POST['Nick'],
-                'pass' => md5($_POST['Pass']),
+                'pass' => $pass,
                 'idcargo' => $_POST['idcargo'],
                 'estado' => $_POST['EstadoUsuario'],
             ];
@@ -129,9 +131,11 @@ function controlador($accion)
             echo 'SE ACTUALIZÓ LA INFORMACIÓN';
             break;
         case 'CAMBIAR_PASS':
+            $pass = $_POST['pass1'];
+            $pass = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 7]);
             $usuario = [
                 'dni' => $_POST['IdUsuario'],
-                'pass' => md5($_POST['pass1'])
+                'pass' => $pass
             ];
             $objPersonal->CambiarPass($usuario);
             echo 'SE ACTUALIZÓ LA INFORMACIÓN';
@@ -456,19 +460,19 @@ function controlador($accion)
                         echo '<td class="ta-center">' .
                             $fila['motivo'] .
                             '</td>';
-                        echo '<td class="ta-center"><i class="fas fa-heartbeat"></i></td>';
+                        echo '<td class="ta-center nvisible"><i class="fas fa-heartbeat"></i></td>';
                         session_start();
                         $idcargo = $_SESSION['cargo'];
 
                         if ($idcargo == 1 || $idcargo == 2) {
-                            if (
+                            /*    if (
                                 $fila['motivo'] === 'CONSULTA MÉDICA' || $fila['motivo'] === 'CITA DE CONTROL' ||
                                 $obteneratencion['estado'] === 'EN PROGR'
-                            ) {
-                                echo '<td class="ta-center"><i class="far fa-calendar-plus"></i></td>';
-                            } else {
+                            ) { */
+                            echo '<td class="ta-center"><i class="far fa-calendar-plus"></i></td>';
+                            /*  } else {
                                 echo '<td class="ta-center"><i class="fas fa-file-medical"></i></td>';
-                            }
+                            } */
                         }
                         echo '</tr>';
                     }
@@ -947,20 +951,23 @@ function controlador($accion)
             }
             break;
         case 'VALIDAR_LOGIN':
+            $pass = $_POST['pass'];
             $usuario = [
                 'user' => $_POST['user'],
-                'pass' => md5($_POST['pass']),
             ];
             $user_existe = $objPersonal->validarUsuario($usuario);
             if ($user_existe->rowCount() > 0) {
                 $user_existe = $user_existe->fetch(PDO::FETCH_NAMED);
-                session_start();
-                $_SESSION['active'] = true;
-                $_SESSION['nombre'] = $user_existe['nombre'];
-                $_SESSION['apellidos'] = $user_existe['apellidos'];
-                $_SESSION['iduser'] = $user_existe['dni'];
-                $_SESSION['cargo'] = $user_existe['idcargo'];
-                echo 'INICIO';
+                $userPass = $user_existe['pass'];
+                if (password_verify($pass, $userPass)) {
+                    session_start();
+                    $_SESSION['active'] = true;
+                    $_SESSION['nombre'] = $user_existe['nombre'];
+                    $_SESSION['apellidos'] = $user_existe['apellidos'];
+                    $_SESSION['iduser'] = $user_existe['dni'];
+                    $_SESSION['cargo'] = $user_existe['idcargo'];
+                    echo 'INICIO';
+                } else echo 'CONTRASEÑA_INCORRECTA';
             } else {
                 echo 'FAIL';
             }

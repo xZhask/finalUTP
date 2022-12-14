@@ -182,7 +182,7 @@ $cargo = $_SESSION['cargo'];
         <input type="hidden" name="ate_idatencion" id="ate_idatencion">
         <input type="hidden" name="dni_atencion" id="dni_atencion">
         <input type="hidden" id="typeAction" name="typeAction" value="REGISTRAR" />
-        <fieldset class="signos-vitales">
+        <fieldset class="signos-vitales nvisible">
           <legend>
             Signos vitales
           </legend>
@@ -209,7 +209,7 @@ $cargo = $_SESSION['cargo'];
             </div>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="nvisible">
           <legend>
             Antecedentes
           </legend>
@@ -280,7 +280,7 @@ $cargo = $_SESSION['cargo'];
         <fieldset class="mgt5">
           <div class="grupo-inputs">
             <div class="grupo-controls w60">
-              <label for="ate_molestia">Molestia Principal:</label>
+              <label for="ate_molestia">Motivo de consulta:</label>
               <textarea name="ate_molestia" id="ate_molestia" cols="30" rows="3" value="-"></textarea>
             </div>
             <div class="grupo-controls w60">
@@ -292,19 +292,19 @@ $cargo = $_SESSION['cargo'];
         <fieldset class="mgt5">
           <div class="cont-contenido-atencion">
             <div class="contenido-atencion">
-              <h2>ANAMNESIS</h2>
+              <h2>OBS. GENERALES</h2>
               <textarea name="txtanamnesis" id="txtanamnesis" cols="30" rows="9" placeholder="Ingresar texto" value="-"></textarea>
             </div>
             <div class="contenido-atencion">
-              <h2>EXAMEN FÍSICO</h2>
+              <h2>HISTORIA FAMILIAR</h2>
               <textarea name="txtexamenfisico" id="txtexamenfisico" cols="30" rows="9" placeholder="Ingresar texto" value="-"></textarea>
             </div>
             <div class="contenido-atencion">
-              <h2>DIAGNÓSTICO</h2>
+              <h2>HISTORIA PERSONAL</h2>
               <textarea name="txtdiagnostico" id="txtdiagnostico" cols="30" rows="9" placeholder="Ingresar texto" value="-"></textarea>
             </div>
             <div class="contenido-atencion">
-              <h2>TRATAMIENTO</h2>
+              <h2>DIAGNÓSTICO</h2>
               <textarea name="txttratamiento" id="txttratamiento" cols="30" rows="9" placeholder="Ingresar texto" value="-"></textarea>
             </div>
           </div>
@@ -373,7 +373,7 @@ $cargo = $_SESSION['cargo'];
           </div>
           <div class="consulta_historia">
             <div class="cont-opciones-examenes"><button type="button" id="btnEditAtencion">Editar Atención</button></div>
-            <div class="hist_signos datosconsulta">
+            <!-- <div class="hist_signos datosconsulta">
               <h4>SIGNOS VITALES</h4>
               <div class="cont-signos">
                 <p id="hist_fc"><span>FC :</span>-</p>
@@ -386,30 +386,30 @@ $cargo = $_SESSION['cargo'];
               <div class="cont-signos">
                 <p id="hist_peso"><span>PESO:</span>-</p>
               </div>
-            </div>
+            </div> -->
             <div class="w60 datosconsulta">
               <p id="hist_fecha">Fecha : </p>
+              <label>Motivo de consulta: </label>
+              <p id="hist_molestia">-</p>
+            </div>
+            <div class="w60 datosconsulta">
               <label>Antecedentes:</label>
               <p id="hist_antecedente">Miau</p>
             </div>
-            <div class="w60 datosconsulta">
-              <label>Molestia Principal: </label>
-              <p id="hist_molestia">-</p>
-            </div>
             <fieldset>
-              <label>ANAMNESIS: </label>
+              <label>Observaciones Generales: </label>
               <p id="hist_anamnesis">-</p>
             </fieldset>
             <fieldset>
-              <label>EXAMEN FÍSICO: </label>
+              <label>Historia familiar: </label>
               <p id="hist_exfisico">-</p>
             </fieldset>
             <fieldset>
-              <label>DIAGNÓSTICO: </label>
+              <label>Historia personal: </label>
               <p id="hist_diagnostico">-</p>
             </fieldset>
             <fieldset>
-              <label>TRATAMIENTO: </label>
+              <label>diagnóstico: </label>
               <p id="hist_tratamiento">-</p>
             </fieldset>
             <div class="cont-examen" id="cont-examen">

@@ -13,7 +13,6 @@ function abrir_form(div, contenido) {
 const abrirformHoy = () => {
   ValidarSesion("#contenido", "hoy.php", ".menu", "#li-hoy");
 };
-
 const abrirformCitas = () => {
   ValidarSesion("#contenido", "citas.php", ".menu", "#li-citas");
 };
@@ -744,8 +743,10 @@ function RegistrarAtencion() {
   let llamadoAjax = ajaxFunction(datax);
   if (llamadoAjax == "SE REGISTRÓ ATENCIÓN") {
     $("#btnregistraratencion").prop("disabled", false);
+    Swal.fire("Se ha registrado Atención", '', "success");
+    cerrarmodal();
     ListarConfirmados();
-    MostrarRegistrarTratamiento();
+    //MostrarRegistrarTratamiento();
   }
 }
 $(function () {
@@ -778,11 +779,11 @@ function VerAtencion(idatencion) {
   let json = JSON.parse(llamadoAjax);
   let atencion = json.atencion;
   $("#hist_fecha").html("Fecha : " + atencion[0].fechaatencion);
-  $("#hist_fc").html("<span>FC : " + atencion[0].fr + "</span>");
-  $("#hist_pa").html("<span>PA : " + atencion[0].pa + "</span>");
-  $("#hist_t").html("<span>T° : " + atencion[0].temp + "</span>");
-  $("#hist_so2").html("<span>So2 : " + atencion[0].so2 + "</span>");
-  $("#hist_peso").html("<span>PESO : " + atencion[0].peso + "</span>");
+  /*   $("#hist_fc").html("<span>FC : " + atencion[0].fr + "</span>");
+    $("#hist_pa").html("<span>PA : " + atencion[0].pa + "</span>");
+    $("#hist_t").html("<span>T° : " + atencion[0].temp + "</span>");
+    $("#hist_so2").html("<span>So2 : " + atencion[0].so2 + "</span>");
+    $("#hist_peso").html("<span>PESO : " + atencion[0].peso + "</span>"); */
   $("#hist_antecedente").html(atencion[0].antecedente);
   $("#hist_molestia").html(atencion[0].motivoconsulta);
   $("#hist_anamnesis").html(atencion[0].anamensis);
@@ -803,11 +804,11 @@ function VerExamen(idatencion) {
   let json = JSON.parse(llamadoAjax);
   let atencion = json.atencion;
   $("#hist_fecha").html("Fecha : " + atencion[0].fechaatencion);
-  $("#hist_fc").html("<span>FC : " + atencion[0].fr + "</span>");
-  $("#hist_pa").html("<span>PA : " + atencion[0].pa + "</span>");
-  $("#hist_t").html("<span>T° : " + atencion[0].temp + "</span>");
-  $("#hist_so2").html("<span>So2 : " + atencion[0].so2 + "</span>");
-  $("#hist_peso").html("<span>PESO : " + atencion[0].peso + "</span>");
+  /*   $("#hist_fc").html("<span>FC : " + atencion[0].fr + "</span>");
+    $("#hist_pa").html("<span>PA : " + atencion[0].pa + "</span>");
+    $("#hist_t").html("<span>T° : " + atencion[0].temp + "</span>");
+    $("#hist_so2").html("<span>So2 : " + atencion[0].so2 + "</span>");
+    $("#hist_peso").html("<span>PESO : " + atencion[0].peso + "</span>"); */
   $("#hist_antecedente").html(atencion[0].antecedente);
   $("#hist_molestia").html(atencion[0].motivoconsulta);
   $("#hist_anamnesis").html(atencion[0].anamensis);
@@ -815,13 +816,13 @@ function VerExamen(idatencion) {
   $("#hist_diagnostico").html(atencion[0].diagnostico);
   $("#hist_tratamiento").html(atencion[0].tratamiento);
   $("#btnEditAtencion").attr("onclick", `editarAtencion(${idatencion})`);
-  data = { accion: "OBTENER_DATOS_EXAMEN", idatencion: idatencion };
-  llamadoAjax = ajaxFunction(data);
-  let jsonExamen = JSON.parse(llamadoAjax);
-  let examen = jsonExamen.atencion;
-  $("#cont-examen").html(
+  //data = { accion: "OBTENER_DATOS_EXAMEN", idatencion: idatencion };
+  //llamadoAjax = ajaxFunction(data);
+  //let jsonExamen = JSON.parse(llamadoAjax);
+  //let examen = jsonExamen.atencion;
+  /*$("#cont-examen").html(
     `<iframe src="formularios/${examen[0].examen}" width="100%"></iframe>`
-  );
+  ); */
 }
 function limpiarhistoria() {
   $("#hist_fecha").html("Fecha : -");

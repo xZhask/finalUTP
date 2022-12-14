@@ -92,11 +92,11 @@ class clsPersonal
     function validarUsuario($usuario)
     {
         $sql =
-            'SELECT * FROM usuario WHERE nick=:nick and pass=:pass and estado=:estado';
+            'SELECT * FROM usuario WHERE nick=:nick and estado=:estado';
         global $cnx;
         $parametros = [
             ':nick' => $usuario['user'],
-            ':pass' => $usuario['pass'],
+            //':pass' => $usuario['pass'],
             ':estado' => 'A',
         ];
         $pre = $cnx->prepare($sql);

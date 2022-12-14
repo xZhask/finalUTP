@@ -42,7 +42,6 @@ if (!empty($_SESSION['active']) == true) {
         <button type="submit">Ingresar</button>
       </form>
     </div>
-
   </div>
   <script language="javascript" src="recursos/js/functions.js"></script>
 </body>

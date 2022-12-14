@@ -13,7 +13,7 @@ class clsAtencion
     function ObtenerDatosAtencion($idatencion)
     {
         $sql =
-            'SELECT a.idatencion,a.fechaatencion,a.idusuario,p.dni,concat_ws(", ", p.apellidos, p.nombre) as paciente,YEAR(CURDATE())-YEAR(p.fecha_nac) as edad,sv.*,a.motivoconsulta,a.antecedente,a.anamensis,a.exfisico,a.diagnostico,a.tratamiento,a.examen FROM atencion a INNER JOIN paciente p ON p.dni=a.idpaciente INNER JOIN signosvitales sv ON sv.idatencion=a.idatencion WHERE a.idatencion=:idatencion';
+            'SELECT a.idatencion,a.fechaatencion,a.idusuario,p.dni,concat_ws(", ", p.apellidos, p.nombre) as paciente,YEAR(CURDATE())-YEAR(p.fecha_nac) as edad,a.examen FROM atencion a INNER JOIN paciente p ON p.dni=a.idpaciente WHERE a.idatencion=:idatencion';
         global $cnx;
         $parametros = [':idatencion' => $idatencion];
         $pre = $cnx->prepare($sql);

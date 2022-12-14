@@ -57,8 +57,8 @@ try {
 */
 $printer->text('Francisco Cabrera N° 419 2° Piso' . "\n");
 $printer->text('(Esq. con A, Lapoint) - Chiclayo' . "\n");
-$printer->text('Tel: (074) 618 329' . "\n");
-$printer->text('Cel: 973 995 974' . "\n");
+$printer->text('Tel: (074) 132 456' . "\n");
+$printer->text('Cel: 972 005 277' . "\n");
 date_default_timezone_set('America/Lima');
 $printer->text(date('d-m-Y H:i:s') . "\n");
 $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);

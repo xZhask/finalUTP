@@ -13,7 +13,7 @@ $cargo = $_SESSION['cargo'];
         <!--<th>Dni</th>-->
         <th>Paciente</th>
         <th>Motivo de Consulta</th>
-        <th>Reg. Signos Vitales</th>
+        <th class="nvisible">Reg. Signos Vitales</th>
         <?php
         if ($cargo == 1 || $cargo == 2) { ?>
           <th>Registrar Atención</th>
